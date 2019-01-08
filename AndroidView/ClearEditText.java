@@ -30,6 +30,7 @@ public class ClearEditText extends AppCompatEditText implements View.OnFocusChan
     private Drawable mClearDrawable;
     private boolean hasFoucs;
     private AfterTextChangedListner afterTextChangedListner;
+    private boolean charactersToUpper ;
 
     public ClearEditText(Context context) {
         this(context, null);
@@ -48,10 +49,13 @@ public class ClearEditText extends AppCompatEditText implements View.OnFocusChan
 
         // 获取EditText的DrawableRight,假如没有设置我们就使用默认的图片,获取图片的顺序是左上右下（0,1,2,3,）
         mClearDrawable = getCompoundDrawables()[2];
+
+        TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.ClearEditText);
+        Drawable deletDrawable = a.getDrawable(R.styleable.ClearEditText_delete_icon);
+        charactersToUpper = a.getBoolean(R.styleable.ClearEditText_character_upper,false);
+        a.recycle();
         if (mClearDrawable == null) {
-            TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.ClearEditText);
-            mClearDrawable = a.getDrawable(R.styleable.ClearEditText_delete_icon);
-            a.recycle();
+            mClearDrawable=deletDrawable;
         }
 
 
@@ -141,9 +145,11 @@ public class ClearEditText extends AppCompatEditText implements View.OnFocusChan
             afterTextChangedListner.afterTextChanged(s);
         }
 
-        removeTextChangedListener(this);
-        setText(s.toString().toUpperCase());
-        addTextChangedListener(this);
+        if (charactersToUpper){
+            removeTextChangedListener(this);
+            setText(s.toString().toUpperCase());
+            addTextChangedListener(this);
+        }
 
     }
 
