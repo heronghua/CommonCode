@@ -2,7 +2,6 @@ package ironaviation.com.priceview;
 
 /**
  * 创建日期：2018/12/13 16:48
- *
  * @author heronghua@bestwise.cc
  * 类说明：右边有删除键的EditText
  */
