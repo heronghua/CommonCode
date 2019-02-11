@@ -4,4 +4,8 @@
 	    <attr name="delete_icon" format="reference"/>
 	    <attr name="character_upper" format="boolean"/>
     </declare-styleable>
+
+    <declare-styleable name="RelativeRadioGroup">
+        <attr name="android:checkedButton" />
+    </declare-styleable>
 </resources>
