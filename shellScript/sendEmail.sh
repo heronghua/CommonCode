@@ -6,7 +6,7 @@ smail(){
         FROM="heronghua1989@126.com" # 发送邮件地址
         RCPTTO=$1 # 收件人地址
         username_base64="aGVyb25naHVhMTk4OUAxMjYuY29t" # 用户名base64编码
-        password_base64="cmF6Z3Jhcm01NDc2MTM4" # 密码base64编码
+        password_base64="xxxxxxxxxx" # 密码base64编码
         local_ip=`ifconfig|grep Bcast|awk -F: '{print $2}'|awk -F " " '{print $1}'|head -1`
         local_name=`uname -n`
         ( for i in "ehlo $smtp_domain" "AUTH LOGIN" "$username_base64" "$password_base64" "MAIL FROM:<$FROM>" "RCPT TO:<$RCPTTO>" "DATA";do
